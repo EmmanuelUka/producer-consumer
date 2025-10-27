@@ -10,8 +10,8 @@ This project implements the **Producer–Consumer problem** using:
 
 **Functionality:**
 
-- The **producer** generates tokens starting from 0 and adds them to a shared table (buffer) with capacity 2.  
-- The **consumer** removes tokens from the table.  
+- The **producer** generates values starting from 0 and adds them to a shared table (buffer) with capacity 2.  
+- The **consumer** removes values from the table.  
 - Synchronization prevents the producer from adding items when full and prevents the consumer from consuming when empty.  
 - **Mutual exclusion** ensures only one thread modifies the table at a time.
 
@@ -21,7 +21,7 @@ This project implements the **Producer–Consumer problem** using:
 
 ### Shared Memory
 - `Table` struct contains:
-  - `items[2]` – array of current tokens  
+  - `items[2]` – array of current values  
   - `count` – number of items currently on the table  
 - Shared memory allows both producer and consumer to access the **same memory**.
 
@@ -49,3 +49,7 @@ Produced: 2  Count: 0
 Consumed: 2  Count: 0
 Produced: 3  Count: 0
 Consumed: 3  Count: 0
+
+-Tokens start at 0 and increment sequentially.
+-Count shows current number of items on the table.
+-Synchronization prevents overproduction or consumption when the table is empty.

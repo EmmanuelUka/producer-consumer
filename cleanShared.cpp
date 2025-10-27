@@ -11,6 +11,6 @@ int main() {
     sem_unlink("/sem_tbl_space");
     sem_unlink("/sem_tbl_items");
 
-    cout << "Cleaned up shared memory and semaphores!" << endl;
+    cout << "Shared Memories and Semaphores are cleared up" << endl;
     return 0;
 }
