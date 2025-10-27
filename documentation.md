@@ -2,37 +2,12 @@
 
 ## 1. Program Description
 
-This project implements the **Producer–Consumer problem** using:
-
-- **POSIX shared memory** (`shm_open`, `mmap`)  
-- **POSIX semaphores** (`sem_open`, `sem_wait`, `sem_post`)  
-- **C++ threads** (`std::thread`)  
-
-**Functionality:**
+This project implements the **Producer–Consumer problem**
 
 - The **producer** generates values starting from 0 and adds them to a shared table (buffer) with capacity 2.  
 - The **consumer** removes values from the table.  
 - Synchronization prevents the producer from adding items when full and prevents the consumer from consuming when empty.  
 - **Mutual exclusion** ensures only one thread modifies the table at a time.
-
----
-
-## 2. Key Components
-
-### Shared Memory
-- `Table` struct contains:
-  - `items[2]` – array of current values  
-  - `count` – number of items currently on the table  
-- Shared memory allows both producer and consumer to access the **same memory**.
-
-### Semaphores
-- **mutexSem**: ensures **mutual exclusion** (only one thread modifies the table at a time).  
-- **spaceSem**: tracks **available space** for the producer (initially 2).  
-- **itemsSem**: tracks **available items** for the consumer (initially 0).  
-
-### Threads
-- `std::thread` runs producer and consumer concurrently.  
-- Semaphores manage synchronization and prevent race conditions.
 
 ---
 
@@ -51,7 +26,7 @@ Produced: 3  Count: 0
 Consumed: 3  Count: 0
 ```
 
-- Tokens start at 0 and increment sequentially.
+- Values start at 0 and increment sequentially.
 - Count shows current number of items on the table.
 - Synchronization prevents overproduction or consumption when the table is empty.
 
@@ -73,16 +48,16 @@ Consumed: 3  Count: 0
 - Protects the count and items array from concurrent modifications that could cause incorrect behavior.
 
 ### Producer Process
-- Generates tokens (starting from 0) and adds them to the buffer.
+- Generates values (starting from 0) and adds them to the buffer.
 - Waits on spaceSem if the buffer is full.
 - Locks mutexSem before modifying the buffer and unlocking afterward.
-- Signals itemsSem after producing a token to notify the consumer.
+- Signals itemsSem after producing a value to notify the consumer.
 
 ### Consumer Process
-- Removes tokens from the buffer.
+- Removes values from the buffer.
 - Waits on itemsSem if the buffer is empty.
 - Locks mutexSem before modifying the buffer and unlocking afterward.
-- Signals spaceSem after consuming a token to notify the producer.
+- Signals spaceSem after consuming a value to notify the producer.
 
 ### Cleanup
 - A separate program removes the shared memory and semaphores (shm_unlink and sem_unlink) to prevent resource leaks and ensure clean execution for future runs.
