@@ -1,9 +1,3 @@
-
----
-
-# **Documentation.md**
-
-```markdown
 # Producer–Consumer Documentation
 
 ## 1. Program Description
