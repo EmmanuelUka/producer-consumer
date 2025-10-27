@@ -9,16 +9,17 @@
 
 ## Usage Instructions 
 ### To Compile
+```text
 g++ producer.cpp -pthread -lrt -o producer
-
 g++ consumer.cpp -pthread -lrt -o consumer
-
 g++ cleanShared.cpp -pthread -lrt -o cleanShared
+```
 
 ### To Run 
+```text
 ./cleanShared
-
 ./producer & ./consumer &
+```
 
 ### Example Output
 ```text
@@ -33,10 +34,13 @@ Consumed: 3  Count: 0
 ```
 
 ### To stop program
+```text
 pkill producer
-
 pkill consumer
+```
 
 ### Clean Shared Resources
+```text
 ./cleanShared
+```
 
