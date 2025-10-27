@@ -1,6 +1,6 @@
 # Producer–Consumer Documentation
 
-## 1. Program Description
+## Program Description
 
 This project implements the **Producer–Consumer problem**
 
@@ -11,7 +11,7 @@ This project implements the **Producer–Consumer problem**
 
 ---
 
-## 3. Example Results
+## Example Results
 
 ### Terminal Output
 
