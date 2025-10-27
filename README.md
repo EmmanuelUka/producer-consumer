@@ -21,14 +21,16 @@ g++ cleanShared.cpp -pthread -lrt -o cleanShared
 ./producer & ./consumer &
 
 ### Example Output
-Produced: 0  COunt: 0
-Produced: 1  COunt: 1
+```text
+Produced: 0  Count: 0
+Produced: 1  Count: 1
 Consumed: 1  Count: 1
 Consumed: 0  Count: 0
-Produced: 2  COunt: 0
+Produced: 2  Count: 0
 Consumed: 2  Count: 0
-Produced: 3  COunt: 0
+Produced: 3  Count: 0
 Consumed: 3  Count: 0
+```
 
 ### To stop program
 pkill producer
